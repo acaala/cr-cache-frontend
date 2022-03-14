@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Table from '$lib/Table.svelte';
+    import TableRow from '$lib/TableRow.svelte';
     import TableSkel from '$lib/TableSkel.svelte';
     import { onMount } from 'svelte';
     import { useApi } from '../hooks/api'
@@ -38,18 +38,29 @@
                 <p class="lg:w-2/3 leading-relaxed text-base">Express js with Redis</p>
             </div>
         </div>
-        <div class="space-y-2">
-            {#if photos}
-                <Table on:refetch={async () => {photos = await useApi('cachePhotos')}} on:clearCache={async () => {photos = await useApi('clearCachePhotos')}} title={'5000 Photos'} currentTime={photos.time} uncachedTime={photos.uncached}/>
-            {:else}
-                <TableSkel />
-            {/if}    
-            {#if posts}
-                <Table on:refetch={async () => {posts = await useApi('cachePosts')}} on:clearCache={async () => {posts = await useApi('clearCachePosts')}} title={'100 Posts'} currentTime={posts.time} uncachedTime={posts.uncached}/>
-            {:else}
-                <TableSkel />
-            {/if}    
-
+        <div class="lg:w-2/3 w-full overflow-auto">
+            <table class="table-fixed w-full text-left whitespace-no-wrap">
+                <thead>
+                <tr>
+                    <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tl rounded-bl">Title</th>
+                    <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Uncached</th>
+                    <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Current</th>
+                    <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800"></th>
+                </tr>
+                </thead>
+                <tbody> 
+                    {#if photos}
+                        <TableRow on:refetch={async () => {photos = await useApi('cachePhotos')}} on:clearCache={async () => {photos = await useApi('clearCachePhotos')}} title={'5000 Photos'} currentTime={photos.time} uncachedTime={photos.uncached}/>
+                    {:else}
+                        <TableSkel />
+                    {/if}    
+                    {#if posts}
+                        <TableRow on:refetch={async () => {posts = await useApi('cachePosts')}} on:clearCache={async () => {posts = await useApi('clearCachePosts')}} title={'100 Posts'} currentTime={posts.time} uncachedTime={posts.uncached}/>
+                    {:else}
+                        <TableSkel />
+                    {/if}    
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
