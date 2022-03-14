@@ -12,7 +12,7 @@ import { createEventDispatcher } from 'svelte';
         dispatch('refetch')
     }
 </script>
-<tr>
+<tr class="w-full">
     <td class="px-4 py-3">{title}</td>
     <td class="px-4 py-3">{uncachedTime} ms</td>
   
