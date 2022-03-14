@@ -20,7 +20,7 @@
 
             <div class="mt-4">
                 <h2 class="title-font text-xl">Your Location:</h2>
-                {#if photos}
+                {#if photos && photos.geo}
                 <div class="flex space-x-4">
                     <p>{photos.geo.city}</p>
                     <p>{photos.geo.country}</p>
