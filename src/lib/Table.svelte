@@ -2,6 +2,7 @@
     import { createEventDispatcher } from 'svelte';
     export let currentTime
     export let uncachedTime
+    export let title
     const dispatch = createEventDispatcher();
 
     const clearCache = () => {
@@ -12,7 +13,7 @@
     }
 </script>
     <div class="lg:w-2/3 w-full overflow-auto">
-      <table class="table-auto w-full text-left whitespace-no-wrap">
+      <table class="table-fixed w-full text-left whitespace-no-wrap">
         <thead>
           <tr>
             <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tl rounded-bl">Title</th>
@@ -23,7 +24,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="px-4 py-3">5000 Photos Api</td>
+            <td class="px-4 py-3">{title}</td>
             <td class="px-4 py-3">{uncachedTime} ms</td>
           
             <td class="px-4 py-3 text-lg text-white">{currentTime} ms</td>

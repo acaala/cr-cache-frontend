@@ -1,16 +1,15 @@
 <script lang="ts">
     import Table from '$lib/Table.svelte';
+    import TableSkel from '$lib/TableSkel.svelte';
     import { onMount } from 'svelte';
+    import { useApi } from '../hooks/api'
     let photos: any;
-    const apiURL = import.meta.env.VITE_API_URL;
-    const getPhotos = async () => {
-        photos = await fetch(`${apiURL}/cachePhotos`).then(r => r.json());
-        console.log(photos)
-    }
-    const clearPhotosCache = async () => {
-        photos = await fetch(`${apiURL}/clearCachePhotos`).then(r => r.json());
-    }
-    onMount(getPhotos)
+    let posts: any;
+
+    onMount(async () => {
+      photos = await useApi('cachePhotos');
+      posts = await useApi('cachePosts');
+    })
 </script>
 <div class="text-gray-400 body-font">
     <div class="container px-5 py-24 mx-auto">
@@ -26,6 +25,12 @@
                     <p>{photos.geo.country}</p>
                     <p>{photos.geo.region}</p>
                 </div>
+                {:else}
+                <div class="flex space-x-4 mt-2">
+                    <div class="h-2 w-8 bg-gray-500"></div>
+                    <div class="h-2 w-8 bg-gray-500"></div>
+                    <div class="h-2 w-8 bg-gray-500"></div>
+                </div>
                 {/if}
             </div>
 
@@ -33,9 +38,19 @@
                 <p class="lg:w-2/3 leading-relaxed text-base">Express js with Redis</p>
             </div>
         </div>
+        <div class="space-y-2">
             {#if photos}
-                <Table on:refetch={getPhotos} on:clearCache={clearPhotosCache} currentTime={photos.time} uncachedTime={photos.uncached}/>
+                <Table on:refetch={async () => {photos = await useApi('cachePhotos')}} on:clearCache={async () => {photos = await useApi('clearCachePhotos')}} title={'5000 Photos'} currentTime={photos.time} uncachedTime={photos.uncached}/>
+            {:else}
+                <TableSkel />
             {/if}    
+            {#if posts}
+                <Table on:refetch={async () => {posts = await useApi('cachePosts')}} on:clearCache={async () => {posts = await useApi('clearCachePosts')}} title={'100 Posts'} currentTime={posts.time} uncachedTime={posts.uncached}/>
+            {:else}
+                <TableSkel />
+            {/if}    
+
+        </div>
     </div>
 </div>
 
