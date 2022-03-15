@@ -5,10 +5,12 @@
     import { useApi } from '../hooks/api'
     let photos: any;
     let posts: any;
+    
 
     onMount(async () => {
       photos = await useApi('cachePhotos');
       posts = await useApi('cachePosts');
+
     })
 </script>
 <div class="text-gray-400 body-font">
@@ -49,7 +51,7 @@
                 </tr>
                 </thead>
                 <tbody> 
-                    {#if photos}
+                    {#if photos }
                         <TableRow on:refetch={async () => {photos = await useApi('cachePhotos')}} on:clearCache={async () => {photos = await useApi('clearCachePhotos')}} title={'5000 Photos'} currentTime={photos.time} uncachedTime={photos.uncached}/>
                     {:else}
                         <TableSkel />
