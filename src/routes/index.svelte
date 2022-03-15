@@ -1,70 +1,50 @@
+
 <script lang="ts">
-    import TableRow from '$lib/TableRow.svelte';
-    import TableSkel from '$lib/TableSkel.svelte';
-    import { onMount } from 'svelte';
-    import { useApi } from '../hooks/api'
-    let photos: any;
-    let posts: any;
-    
 
-    onMount(async () => {
-      photos = await useApi('cachePhotos');
-      posts = await useApi('cachePosts');
-
-    })
 </script>
-<div class="text-gray-400 body-font">
-    <div class="container px-5 py-24 mx-auto">
-        <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">CR Cache</h1>
-            <div class="h-1 w-20 bg-indigo-500 rounded"></div>
-            <div class="mb-1">
-                <p class="lg:w-2/3 text-xl leading-relaxed">Express js with Redis</p>
-            </div>
-            <div class="mt-4">
-                <h2 class="title-font text-xl">Your Location:</h2>
-                {#if photos && photos.geo}
-                <div class="flex space-x-4">
-                    <p>{photos.geo.city}</p>
-                    <p>{photos.geo.country}</p>
-                    <p>{photos.geo.region}</p>
-                </div>
-                {:else}
-                <div class="flex space-x-4 mt-2">
-                    <div class="h-2 w-8 bg-gray-500"></div>
-                    <div class="h-2 w-8 bg-gray-500"></div>
-                    <div class="h-2 w-8 bg-gray-500"></div>
-                </div>
-                {/if}
-            </div>
-
-           
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto flex flex-wrap">
+      <div class="lg:w-1/2 w-full mb-6">
+          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">CR Cache</h1>
+          <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+      </div>
+    <div class="flex flex-wrap -m-4">
+      <div class="p-4 md:w-full">
+        <div class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
+          <div class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-8 h-8" viewBox="0 0 24 24">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <div class="flex-grow">
+            <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Home Page</h2>
+            <a href="/cr/home" class="mt-3 text-indigo-500 inline-flex items-center">Go
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
         </div>
-        <div class="lg:w-2/3 w-full overflow-auto">
-            <table class="table- w-full text-left whitespace-no-wrap">
-                <thead>
-                <tr>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tl rounded-bl">Title</th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Uncached</th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Current</th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800"></th>
-                </tr>
-                </thead>
-                <tbody> 
-                    {#if photos }
-                        <TableRow on:refetch={async () => {photos = await useApi('cachePhotos')}} on:clearCache={async () => {photos = await useApi('clearCachePhotos')}} title={'5000 Photos'} currentTime={photos.time} uncachedTime={photos.uncached}/>
-                    {:else}
-                        <TableSkel />
-                    {/if}    
-                    {#if posts}
-                        <TableRow on:refetch={async () => {posts = await useApi('cachePosts')}} on:clearCache={async () => {posts = await useApi('clearCachePosts')}} title={'100 Posts'} currentTime={posts.time} uncachedTime={posts.uncached}/>
-                    {:else}
-                        <TableSkel />
-                    {/if}    
-                </tbody>
-            </table>
+      </div>
+      <div class="p-4 md:w-full">
+        <div class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
+          <div class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="flex-grow">
+            <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Prices page</h2>
+            <a href="/cr/prices" class="mt-3 text-indigo-500 inline-flex items-center">Go
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-
+  </div>
+</section>
 

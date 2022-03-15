@@ -15,7 +15,7 @@
 
 <div class="flex items-center text-gray-800 space-x-6">
     <div>
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-800">CR Homepage</h1>
+        <a href="/" class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-800">CR Homepage</a>
         <div class="h-1 w-20 bg-indigo-500 rounded"></div>
     </div>
     <p class="text-xl mb-0">Uncached: {uncachedTime} ms</p>
