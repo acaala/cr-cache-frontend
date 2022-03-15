@@ -3,6 +3,7 @@
     import { useApi } from '../hooks/api';
 
     let html: any
+    let flushed: text
 
     onMount(async () => {
         html = await useApi('cr-home');
@@ -21,8 +22,16 @@
         {/if}
 
         <div>
-            <button class="px-4 py-1  bg-gray-500 text-white rounded-lg hover:bg-gray-700" on:click={async () => {html = await useApi('cr-home-clear'); console.log(html)}} >Clear Cache</button>
-            <button class="px-4 py-1  bg-gray-500 text-white rounded-lg hover:bg-gray-700" on:click={async () => {html = await useApi('cr-home'); console.log(html)}}>Refetch</button>
+            <button class="px-4 py-1  bg-gray-500 text-white rounded-lg hover:bg-gray-700" on:click={async () => {html = await useApi('cr-home-clear'); console.log(html); flushed = ''}} >Clear Cache</button>
+            <button class="px-4 py-1  bg-gray-500 text-white rounded-lg hover:bg-gray-700" on:click={async () => {html = await useApi('cr-home'); console.log(html); flushed = ''}}>Refetch</button>
+        </div>
+
+
+        <div class="flex">
+            <button class="px-4 py-1  bg-red-500 text-white rounded-lg hover:bg-red-700" on:click={async () => {flushed = await useApi('flushAll')}}>FlushDB</button>
+            {#if flushed}
+            <p class="mb-0">{flushed}</p>
+            {/if}
         </div>
     </div>
 
