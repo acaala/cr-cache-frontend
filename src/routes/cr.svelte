@@ -21,12 +21,14 @@
         {/if}
 
         <div>
-            <button class="px-4 py-1  bg-gray-500 text-white rounded-lg hover:bg-gray-700" on:click={async () => {html = await useApi('cr-home-clear')}} >Clear Cache</button>
-            <button class="px-4 py-1  bg-gray-500 text-white rounded-lg hover:bg-gray-700" on:click={async () => {html = await useApi('cr-home')}}>Refetch</button>
+            <button class="px-4 py-1  bg-gray-500 text-white rounded-lg hover:bg-gray-700" on:click={async () => {html = await useApi('cr-home-clear'); console.log(html)}} >Clear Cache</button>
+            <button class="px-4 py-1  bg-gray-500 text-white rounded-lg hover:bg-gray-700" on:click={async () => {html = await useApi('cr-home'); console.log(html)}}>Refetch</button>
         </div>
     </div>
 
     {#if html}
-    {@html html.response}
+        {@html html.response}
+    {:else}
+        <h2 class="text-white text-4xl mt-10">Loading</h2>
     {/if}
 </div>
