@@ -3,7 +3,7 @@
     import { afterUpdate, onMount } from "svelte";
     import { useApi } from '../../hooks/api';
     import { hidePopup } from '../../hooks/cr'
-    let page = 'cr-prices';
+    let page = 'cr-nft';
     let html: any
 
     onMount(async () => {
