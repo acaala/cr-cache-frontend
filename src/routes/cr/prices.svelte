@@ -21,10 +21,14 @@
     })
 </script>
 
-<div>
+<div class="w-full">
     {#if html}
         <Header time={html.time} uncachedTime={html.uncachedTime} on:refetch={async () => {html = await useApi(`${page}-clear`)}} on:clearCache={async () => {html = await useApi(page)}} />
-        {@html html.response}
+        
+        <div class="w-full">
+            {@html html.response}
+        </div> 
+            
     {:else}
         <h2 class="text-white text-4xl mt-10">Loading</h2>
     {/if}
