@@ -1,6 +1,25 @@
 <script lang="ts">
+import { useApi } from "../hooks/api";
+import { onMount } from "svelte";
+
+
     export let title: string
     export let link: string
+	export let label: string
+
+	let time: string
+	let uncachedTime: string
+	let size: number
+
+	
+	const getData = async () => {
+		const response = await useApi(label);
+		console.log(response)
+		time = response.time
+		uncachedTime = response.uncachedTime
+		size =  response.size
+	}
+	onMount(getData)
 
 </script>
 
@@ -23,6 +42,11 @@
 		</div>
 		<div class="flex-grow">
 			<h2 class="text-gray-900 text-lg title-font font-medium mb-3">{title}</h2>
+			<div>
+				<p class=" text-xs title-font font-medium text-gray-400 mb-1"><span class="tracking-widest">Time: </span>{time} ms</p>
+				<p class=" text-xs title-font font-medium text-gray-400 mb-1"><span class="tracking-widest">Uncached Time: </span>{uncachedTime} ms</p>
+				<p class=" text-xs title-font font-medium text-gray-400 mb-1"><span class="tracking-widest">Size: </span>{size} Bytes</p>
+			</div>
 			<a href={link} class="mt-3 text-indigo-500 inline-flex items-center"
 				>Go
 				<svg

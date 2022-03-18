@@ -10,11 +10,11 @@ import PageCard from "$lib/PageCard.svelte";
           <div class="h-1 w-20 bg-indigo-500 rounded"></div>
       </div>
       <div class="flex flex-wrap -m-4">
-        <PageCard title={'Home Page'} link={'/cr/home'} />
-        <PageCard title={'Prices Page'} link={'/cr/prices'} />
-        <PageCard title={'News Page'} link={'/cr/news'} />
-        <PageCard title={'Nft Page'} link={'/cr/nft'} />
-        <PageCard title={'Support Page'} link={'/cr/support'} />
+        <PageCard title={'Home Page'} link={'/cr/home'} label={'cr-home'}/>
+        <PageCard title={'Prices Page'} link={'/cr/prices'} label={'cr-prices'}/>
+        <PageCard title={'News Page'} link={'/cr/news'} label={'cr-news'}/>
+        <PageCard title={'Nft Page'} link={'/cr/nft'} label={'cr-nft'} />
+        <PageCard title={'Support Page'} link={'/cr/support'} label={'cr-support'} />
       </div>
   </div>
 </section>
