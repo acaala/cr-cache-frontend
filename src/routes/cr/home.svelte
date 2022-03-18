@@ -37,12 +37,3 @@ import Index from "../index.svelte";
     {/if}
 
 </div>
-
-<style>
-    .cr-landing__hero__img__primary__video-container {
-        clip-path: none;
-        -webkit-clip-path: none;
-        position: relative;
-    }
-
-</style>
