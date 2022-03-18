@@ -16,7 +16,7 @@
 		width: 8px;
 		height: 8px;
 		border-radius: 50%;
-		background: currentColor;
+		background: linear-gradient(95deg, #0072ee 3%, #00a1da 45%, #00d1c6 79%, #00e3be 99%);
 		left: 0;
 		top: 0;
 		animation: db3-1 1.5s linear infinite alternate,
