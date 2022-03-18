@@ -15,8 +15,8 @@
       const script = document.createElement('script')
       script.src = 'https://development.coinrivet.com/wp-content/themes/coinrivet/assets/scripts/main.js?v=1.0.79';
       const secondScript = document.createElement('script');
-      script.src ='https://development.coinrivet.com/wp-content/themes/coinrivet/assets/scripts/landing.js?v=1.0.79';
-      document.head.appendChild(script)
+      secondScript.src ='https://development.coinrivet.com/wp-content/themes/coinrivet/assets/scripts/landing.js?v=1.0.79';
+    //   document.head.appendChild(script)
       document.head.appendChild(secondScript)
     }
 
