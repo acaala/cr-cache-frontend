@@ -4,6 +4,7 @@
     import { createEventDispatcher } from 'svelte';
     export let uncachedTime: any
     export let time: any
+    export let size: any
     const dispatch = createEventDispatcher();
 
     const refetch = () => {
@@ -27,6 +28,7 @@
     <div class="flex space-x-4 leading-relaxed w-1/3">
         <p class="text-lg mb-0 tracking-wide">Uncached: <span class="font-bold">{uncachedTime} ms</span></p>
         <p class="text-lg mb-0 tracking-wide">Current: <span class="font-bold">{time} ms</span></p>
+        <p class="text-lg mb-0 tracking-wide">Size: <span class="font-bold">{size} Bytes</span></p>
     </div>
     <div class="w-1/3">
         <button class="px-4 py-2  bg-gray-500 text-white rounded-lg hover:bg-gray-700" on:click={refetch} >Clear Cache</button>

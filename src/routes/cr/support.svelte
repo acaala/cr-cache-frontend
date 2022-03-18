@@ -3,6 +3,7 @@
     import { afterUpdate, onMount } from "svelte";
     import { useApi } from '../../hooks/api';
     import { hidePopup } from '../../hooks/cr'
+import Home from "./home.svelte";
     let page = 'cr-support';
     let html: any
 
@@ -19,7 +20,7 @@
 
 <div class="w-full">
     {#if html}
-        <Header time={html.time} uncachedTime={html.uncachedTime} on:refetch={async () => {html = await useApi(`${page}-clear`)}} on:clearCache={async () => {html = await useApi(page)}} />
+        <Header {...html} on:refetch={async () => {html = await useApi(`${page}-clear`)}} on:clearCache={async () => {html = await useApi(page)}} />
         
         <div class="w-full">
             {@html html.response}

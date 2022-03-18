@@ -2,6 +2,7 @@
     import Header from "$lib/Header.svelte";
     import { onMount } from "svelte";
     import { useApi } from '../../hooks/api';
+import Index from "../index.svelte";
 
 
     let html: any;
@@ -28,7 +29,7 @@
 
 <div>
     {#if html != undefined}
-        <Header time={html.time} uncachedTime={html.uncachedTime} on:refetch={async () => {html = await useApi('cr-home-clear'); console.log(html)}} on:clearCache={async () => {html = await useApi('cr-home')}} />
+        <Header {...html} on:refetch={async () => {html = await useApi('cr-home-clear'); console.log(html)}} on:clearCache={async () => {html = await useApi('cr-home')}} />
         {@html html.response}
 
     {:else}
