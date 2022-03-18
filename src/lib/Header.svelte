@@ -33,6 +33,6 @@
     <div class="w-1/3">
         <button class="px-4 py-2  bg-gray-500 text-white rounded-lg hover:bg-gray-700" on:click={refetch} >Clear Cache</button>
         <button class="px-4 py-2  bg-gray-500 text-white rounded-lg hover:bg-gray-700" on:click={clearCache}>Refetch</button>
-        <button class="px-4 py-2  bg-gray-500 text-white rounded-lg hover:bg-gray-700" on:click={flush}>FlushAll</button>
+        <button class="px-4 py-2  bg-red-500 text-white rounded-lg hover:bg-red-700" on:click={flush}>FlushAll</button>
     </div>
 </div>
