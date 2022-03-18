@@ -4,4 +4,10 @@ const useApi = async (endpoint: string) => {
     return await fetch(`${apiURL}/${endpoint}`).then(r => r.json());
 }
 
-export {useApi}
+const loadScript = async (source: string) => {
+    const element = document.createElement('script');
+    element.src = `${apiURL}/${source}`
+    document.head.appendChild(element);
+};
+
+export {useApi, loadScript}

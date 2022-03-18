@@ -3,8 +3,8 @@
 	import Loading from '$lib/Loading.svelte';
 	import type { IHtml } from '../../interface';
 	import { afterUpdate, onMount } from 'svelte';
-	import { useApi } from '../../hooks/api';
-	import { hidePopup, loadScript } from '../../hooks/cr';
+	import { useApi, loadScript } from '../../hooks/api';
+	import { hidePopup } from '../../hooks/cr';
 	import { page } from '$app/stores';
 
 	let html = {
@@ -19,7 +19,8 @@
 
 	onMount(async () => {
 		html = await useApi(slug);
-		loadScript();
+		loadScript('js-main');
+		if ($page.params.slug == 'home') loadScript('js-landing');
 	});
 
 	afterUpdate(() => {
