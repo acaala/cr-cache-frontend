@@ -5,6 +5,7 @@
 	export let uncachedTime: any;
 	export let time: any;
 	export let size: any;
+	export const response = undefined;
 	const dispatch = createEventDispatcher();
 
 	const refetch = () => {
@@ -24,7 +25,7 @@
 		<a
 			href="/"
 			class="sm:text-3xl text-2xl font-medium title-font mb-2 text-white hover:text-gray-300"
-			>CR Homepage</a
+			>CR Cache</a
 		>
 		<div class="h-1 w-20 bg-indigo-500 rounded" />
 	</div>
@@ -42,15 +43,16 @@
 	</div>
 	<div class="ml-auto">
 		<button
-			class="px-4 py-2  bg-gray-500 text-white rounded-lg hover:bg-gray-700"
+			class="text-white bg-gray-500 border-0 py-1 px-5 focus:outline-none hover:bg-gray-600 rounded text-lg"
 			on:click={refetch}>Clear Cache</button
 		>
 		<button
-			class="px-4 py-2  bg-gray-500 text-white rounded-lg hover:bg-gray-700"
+			class="text-white bg-gray-500 border-0 py-1 px-5 focus:outline-none hover:bg-gray-600 rounded text-lg"
 			on:click={clearCache}>Refetch</button
 		>
-		<button class="px-4 py-2  bg-red-500 text-white rounded-lg hover:bg-red-700" on:click={flush}
-			>FlushAll</button
+		<button
+			class="text-white bg-red-500 border-0 py-1 px-5 focus:outline-none hover:bg-red-600 rounded text-lg"
+			on:click={flush}>FlushAll</button
 		>
 	</div>
 </div>
