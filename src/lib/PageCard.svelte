@@ -1,30 +1,29 @@
 <script lang="ts">
-import { useApi } from "../hooks/api";
-import { onMount } from "svelte";
+	import { useApi } from '../hooks/api';
+	import { onMount } from 'svelte';
 
+	export let title: string;
+	export let link: string;
+	export let label: string;
 
-    export let title: string
-    export let link: string
-	export let label: string
+	let time: string;
+	let uncachedTime: string;
+	let size: number;
 
-	let time: string
-	let uncachedTime: string
-	let size: number
-
-	
 	const getData = async () => {
 		const response = await useApi(label);
-		console.log(response)
-		time = response.time
-		uncachedTime = response.uncachedTime
-		size =  response.size
-	}
-	onMount(getData)
-
+		console.log(response);
+		time = response.time;
+		uncachedTime = response.uncachedTime;
+		size = response.size;
+	};
+	onMount(getData);
 </script>
 
 <div class="p-4 md:w-full lg:w-1/2">
-	<div class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col shadow">
+	<div
+		class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col shadow"
+	>
 		<div
 			class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0"
 		>
@@ -43,9 +42,15 @@ import { onMount } from "svelte";
 		<div class="flex-grow">
 			<h2 class="text-gray-900 text-lg title-font font-medium mb-3">{title}</h2>
 			<div>
-				<p class=" text-xs title-font font-medium text-gray-400 mb-1"><span class="tracking-widest">Time: </span>{time} ms</p>
-				<p class=" text-xs title-font font-medium text-gray-400 mb-1"><span class="tracking-widest">Uncached Time: </span>{uncachedTime} ms</p>
-				<p class=" text-xs title-font font-medium text-gray-400 mb-1"><span class="tracking-widest">Size: </span>{size} Bytes</p>
+				<p class=" text-xs title-font font-medium text-gray-400 mb-1">
+					<span class="tracking-widest">Time: </span>{time} ms
+				</p>
+				<p class="text-xs title-font font-medium text-gray-400 mb-1">
+					<span class="tracking-widest">Uncached Time: </span>{uncachedTime} ms
+				</p>
+				<p class=" text-xs title-font font-medium text-gray-400 mb-1">
+					<span class="tracking-widest">Size: </span>{size} Bytes
+				</p>
 			</div>
 			<a href={link} class="mt-3 text-indigo-500 inline-flex items-center"
 				>Go
