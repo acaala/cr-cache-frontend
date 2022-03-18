@@ -4,7 +4,7 @@
 	.dots-bars-3 {
 		width: 40px;
 		height: 26px;
-		--c: linear-gradient(currentColor 0 0);
+		--c: linear-gradient(95deg, #0072ee 3%, #00a1da 45%, #00d1c6 79%, #00e3be 99%);
 		background: var(--c) 0 100%, var(--c) 50% 100%, var(--c) 100% 100%;
 		background-size: 8px calc(100% - 4px);
 		background-repeat: no-repeat;
