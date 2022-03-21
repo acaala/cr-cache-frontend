@@ -21,6 +21,7 @@
 		html = await useApi(slug);
 		loadScript('js-main');
 		if ($page.params.slug == 'home') loadScript('js-landing');
+		if ($page.params.slug == 'prices') loadScript('js-prices');
 	});
 
 	afterUpdate(() => {

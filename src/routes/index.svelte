@@ -33,6 +33,7 @@
 		<div class="flex flex-wrap -m-4">
 			<JsCard title={'Main.js'} label={'js-main-info'} tag={'js-main'} />
 			<JsCard title={'Landing.js'} label={'js-landing-info'} tag={'js-landing'} />
+			<JsCard title={'Prices.js'} label={'js-prices-info'} tag={'js-prices'} />
 		</div>
 	</div>
 </section>
