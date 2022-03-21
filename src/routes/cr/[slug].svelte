@@ -15,10 +15,10 @@
 	} as IHtml;
 
 	let slug = `cr-${$page.params.slug}`;
-	$: template = html;
 
 	onMount(async () => {
 		html = await useApi(slug);
+		console.log(slug);
 		loadScript('js-main');
 		if ($page.params.slug == 'home') loadScript('js-landing');
 		if ($page.params.slug == 'prices') loadScript('js-prices');
@@ -44,8 +44,8 @@
 			<Loading />
 		</div>
 	{:then}
-		{#if template.response != undefined}
-			{@html template.response}
+		{#if html.response != undefined}
+			{@html html.response}
 		{:else}
 			<div class="mt-10 pl-4 text-xl title-font font-medium text-gray-800 tracking-wide">
 				Cache Cleared: <button

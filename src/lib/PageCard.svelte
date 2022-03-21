@@ -16,12 +16,12 @@
 		uncachedTime = response.uncachedTime;
 		size = response.size;
 	};
-	onMount(getData);
+	// onMount(getData);
 </script>
 
 <div class="p-4 md:w-full lg:w-1/2">
 	<div
-		class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col shadow"
+		class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col shadow items-center"
 	>
 		<div
 			class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0"
@@ -42,13 +42,13 @@
 			<h2 class="text-gray-900 text-lg title-font font-medium mb-3">{title}</h2>
 			<div>
 				<p class=" text-xs title-font font-medium text-gray-400 mb-1">
-					<span class="tracking-widest">Time: </span>{time} ms
+					<span class="tracking-widest">Time: </span>{time ? time : '-'} ms
 				</p>
 				<p class="text-xs title-font font-medium text-gray-400 mb-1">
-					<span class="tracking-widest">Uncached Time: </span>{uncachedTime} ms
+					<span class="tracking-widest">Uncached Time: </span>{uncachedTime ? uncachedTime : '-'} ms
 				</p>
 				<p class=" text-xs title-font font-medium text-gray-400 mb-1">
-					<span class="tracking-widest">Size: </span>{size} Bytes
+					<span class="tracking-widest">Size: </span>{size ? size : '-'} Bytes
 				</p>
 			</div>
 			<a href={link} class="mt-3 text-indigo-500 inline-flex items-center"
@@ -65,6 +65,13 @@
 					<path d="M5 12h14M12 5l7 7-7 7" />
 				</svg>
 			</a>
+		</div>
+		<div class="flex-shrink">
+			<button
+				on:click={getData}
+				class="text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded text-sm"
+				>Get Data</button
+			>
 		</div>
 	</div>
 </div>

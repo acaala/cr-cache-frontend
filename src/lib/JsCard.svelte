@@ -8,6 +8,7 @@
 	let size;
 
 	onMount(async () => {
+		console.log(await useApi(label));
 		size = await useApi(label);
 	});
 	const clearCache = async () => {
@@ -15,7 +16,7 @@
 		size = '-';
 	};
 
-	const refetch = async () => {
+	const fetch = async () => {
 		loadScript(tag);
 		size = await useApi(label);
 	};
@@ -41,15 +42,15 @@
 		<h2 class="text-lg text-gray-900 font-medium title-font mb-2">{title}</h2>
 		<div>
 			<p class="text-xs title-font font-medium text-gray-400 mb-1">
-				<span class="tracking-widest">Size: </span>{size} Bytes
+				<span class="tracking-widest">Size: </span>{size ? size : '-'} Bytes
 			</p>
+			<button
+				class="flex mt-4 text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded text-lg"
+				on:click={fetch}>Fetch</button
+			>
 			<button
 				class="flex mt-4 text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg"
 				on:click={clearCache}>Clear Cache</button
-			>
-			<button
-				class="flex mt-4 text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded text-lg"
-				on:click={refetch}>Refetch</button
 			>
 		</div>
 	</div>

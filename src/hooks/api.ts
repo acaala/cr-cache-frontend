@@ -5,12 +5,12 @@ const useApi = async (endpoint: string) => {
 }
 
 const scripts: Array<string> = [];
-const loadScript = async (source: string) => {
+const loadScript = (source: string) => {
     const element = document.createElement('script');
     element.src = `${apiURL}/${source}`;
     if(scripts.includes(source)) return;
     document.head.appendChild(element);
-    scripts.push(source)
+    scripts.push(source);
 };
 
 export {useApi, loadScript}
