@@ -12,7 +12,6 @@
 
 	const getData = async () => {
 		const response = await useApi(label);
-		console.log(response);
 		time = response.time;
 		uncachedTime = response.uncachedTime;
 		size = response.size;
