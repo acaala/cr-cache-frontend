@@ -2,7 +2,7 @@
 	import Header from '$lib/Header.svelte';
 	import Loading from '$lib/Loading.svelte';
 	import type { IHtml } from '../../interface';
-	import { afterUpdate, onMount } from 'svelte';
+	import { afterUpdate, onMount, tick } from 'svelte';
 	import { useApi, loadScript } from '../../hooks/api';
 	import { hidePopup } from '../../hooks/cr';
 	import { page } from '$app/stores';
@@ -23,18 +23,7 @@
 		if ($page.params.slug == 'prices' || $page.params.slug == 'market-data') {
 			loadScript('js-prices', null);
 		}
-		initialize_itb_widget();
 	});
-	const initialize_itb_widget = () => {
-		window['itbWidgetInit']({
-			apiKey: 'Cw52L1w7SH3SLjjFQjKxq3n4EsMUg9wZ6EbjOhZP',
-			options: {
-				tokenId: 'BTC',
-				loader: true,
-				hideNavigator: true
-			}
-		});
-	};
 
 	afterUpdate(() => {
 		hidePopup(html);

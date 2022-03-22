@@ -26,6 +26,7 @@
 			<PageCard title={'NFT'} link={'/cr/nft'} label={'cr-nft'} />
 			<PageCard title={'Support'} link={'/cr/support'} label={'cr-support'} />
 			<PageCard title={'Market Data'} link={'/cr/market-data'} label={'cr-market-data'} />
+			<PageCard title={'Learn'} link={'/cr/learn'} label={'cr-learn'} />
 		</div>
 	</div>
 </section>
@@ -95,6 +96,20 @@
 					on:click={async () => (flushed = await useApi('flushAll'))}>Flush All</button
 				>
 			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="container mx-auto py-12">
+		<div class="flex flex-wrap w-full mb-10 flex-col items-center text-center ">
+			<h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Issues</h1>
+		</div>
+
+		<div class="text-lg title-font font-medium text-gray-500 tracking-wide">
+			<p>Home page phone doesnt load until screen resize</p>
+			<p>ITB incomplete data</p>
+			<p>ITB filter list doesnt show until resize (also not populated)</p>
 		</div>
 	</div>
 </section>

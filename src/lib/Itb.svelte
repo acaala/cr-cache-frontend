@@ -1,5 +1,18 @@
 <script>
+	import { onMount } from 'svelte';
+
 	console.log('Imported ITB');
+	const initialize_itb_widget = () => {
+		window['itbWidgetInit']({
+			apiKey: 'Cw52L1w7SH3SLjjFQjKxq3n4EsMUg9wZ6EbjOhZP',
+			options: {
+				tokenId: 'BTC',
+				loader: true,
+				hideNavigator: true
+			}
+		});
+	};
+	onMount(initialize_itb_widget);
 </script>
 
 <svelte:head>
