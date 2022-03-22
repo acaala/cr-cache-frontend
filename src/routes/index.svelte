@@ -9,11 +9,15 @@
 	let cacheCleared: boolean = false;
 </script>
 
+<div class="container p-2 ml-4">
+	<h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">CR Cache</h1>
+	<div class="h-1 w-20 bg-indigo-500 rounded" />
+</div>
+
 <section class="text-gray-600 body-font">
-	<div class="container px-5 py-24 mx-auto">
-		<div class="lg:w-1/2 w-full mb-6">
-			<h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">CR Cache</h1>
-			<div class="h-1 w-20 bg-indigo-500 rounded" />
+	<div class="container px-5 py-12 mx-auto">
+		<div class="flex flex-wrap w-full mb-10 flex-col items-center text-center">
+			<h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Pages</h1>
 		</div>
 		<div class="flex flex-wrap -m-4">
 			<PageCard title={'Home'} link={'/cr/home'} label={'cr-home'} />
@@ -21,12 +25,13 @@
 			<PageCard title={'News'} link={'/cr/news'} label={'cr-news'} />
 			<PageCard title={'NFT'} link={'/cr/nft'} label={'cr-nft'} />
 			<PageCard title={'Support'} link={'/cr/support'} label={'cr-support'} />
+			<PageCard title={'Market Data'} link={'/cr/market-data'} label={'cr-market-data'} />
 		</div>
 	</div>
 </section>
 
 <section class="text-gray-600 body-font">
-	<div class="container px-5 py-24 mx-auto">
+	<div class="container px-5 py-12 mx-auto">
 		<div class="flex flex-wrap w-full mb-10 flex-col items-center text-center">
 			<h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Javascripts</h1>
 		</div>
@@ -34,12 +39,13 @@
 			<JsCard title={'Main.js'} label={'js-main-info'} tag={'js-main'} />
 			<JsCard title={'Landing.js'} label={'js-landing-info'} tag={'js-landing'} />
 			<JsCard title={'Prices.js'} label={'js-prices-info'} tag={'js-prices'} />
+			<JsCard title={'Market Data.js'} label={'js-market-data-info'} tag={'js-market-data'} />
 		</div>
 	</div>
 </section>
 
 <section>
-	<div class="container mx-auto mb-4">
+	<div class="container mx-auto py-12">
 		<div class="flex flex-wrap w-full mb-10 flex-col items-center text-center ">
 			<h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Danger Zone</h1>
 		</div>

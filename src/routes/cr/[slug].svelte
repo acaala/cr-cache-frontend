@@ -6,6 +6,7 @@
 	import { useApi, loadScript } from '../../hooks/api';
 	import { hidePopup } from '../../hooks/cr';
 	import { page } from '$app/stores';
+	import Itb from '$lib/Itb.svelte';
 
 	let html = {
 		time: '-',
@@ -13,23 +14,38 @@
 		size: '-',
 		response: undefined
 	} as IHtml;
-
 	let slug = `cr-${$page.params.slug}`;
 
 	onMount(async () => {
 		html = await useApi(slug);
-		console.log(slug);
-		loadScript('js-main');
-		if ($page.params.slug == 'home') loadScript('js-landing');
-		if ($page.params.slug == 'prices') loadScript('js-prices');
+		loadScript('js-main', null);
+		if ($page.params.slug == 'home') loadScript('js-landing', null);
+		if ($page.params.slug == 'prices' || $page.params.slug == 'market-data') {
+			loadScript('js-prices', null);
+		}
+		initialize_itb_widget();
 	});
+	const initialize_itb_widget = () => {
+		window['itbWidgetInit']({
+			apiKey: 'Cw52L1w7SH3SLjjFQjKxq3n4EsMUg9wZ6EbjOhZP',
+			options: {
+				tokenId: 'BTC',
+				loader: true,
+				hideNavigator: true
+			}
+		});
+	};
 
 	afterUpdate(() => {
 		hidePopup(html);
 	});
 </script>
 
-<div>
+{#if $page.params.slug == 'market-data'}
+	<Itb />
+{/if}
+
+<div class={$page.params.slug == 'market-data' ? 'site crMarketData' : ' '}>
 	<Header
 		{...html}
 		on:refetch={async () => {

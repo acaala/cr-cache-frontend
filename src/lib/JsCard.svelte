@@ -17,8 +17,7 @@
 	};
 
 	const fetch = async () => {
-		loadScript(tag);
-		size = await useApi(label);
+		size = await loadScript(tag, label);
 	};
 </script>
 
@@ -44,14 +43,14 @@
 			<p class="text-xs title-font font-medium text-gray-400 mb-1">
 				<span class="tracking-widest">Size: </span>{size ? size : '-'} Bytes
 			</p>
-			<button
+			<!-- <button
 				class="flex mt-4 text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded text-lg"
 				on:click={fetch}>Fetch</button
 			>
 			<button
 				class="flex mt-4 text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg"
 				on:click={clearCache}>Clear Cache</button
-			>
+			> -->
 		</div>
 	</div>
 </div>
